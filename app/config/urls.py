@@ -18,9 +18,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('posts/', include('posts.urls'))
+    path('posts/', include('posts.urls')),
+    path('', views.index),
+
 
 # 이미지를 브라우저에 보여줌 ( 사진이 저장된 ROOT에서 사진을 가져와 URL 서버로 사진을 보여줌)
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT,)
