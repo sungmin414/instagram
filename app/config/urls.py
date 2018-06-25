@@ -23,7 +23,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('posts/', include('posts.urls')),
-    path('', views.index),
+    path('', views.index, name='index'),
     path('members/', include('members.urls')),
 
 # 이미지를 브라우저에 보여줌 ( 사진이 저장된 ROOT에서 사진을 가져와 URL 서버로 사진을 보여줌)
