@@ -16,11 +16,11 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('posts/', include('posts.urls'))
 
 # 이미지를 브라우저에 보여줌 ( 사진이 저장된 ROOT에서 사진을 가져와 URL 서버로 사진을 보여줌)
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT,)
