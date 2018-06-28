@@ -28,7 +28,12 @@ SECRET_KEY = '*rbot%7u_9vgge-3vol75$wej7dd!872zq(g7#cnnc5(mo3_!r'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# Auth
 AUTH_USER_MODEL = 'members.User'
+LOGIN_URL = '/members/login/'
+
+
 
 # Application definition
 
@@ -81,9 +86,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
+    # 'instagram'이라는 이름을 사용하는 'PostgreSQL'데이터베이스로 변경
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'instargram',
+        'USER': 'psm',
+        'PASSWORD': '',
+        'PORT': '5432',
+        'HOST':'localhost',
     }
 }
 

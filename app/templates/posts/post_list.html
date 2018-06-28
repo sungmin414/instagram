@@ -1,11 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Post List</h1>
-{% for post in posts %}
-<div>
-    <div>{{ post.author.username}}</div>
-    <div><img src="{{ post.photo.url }}" width="100%" alt=""></div>
-</div>
-{% endfor %}
-{% endblock%}
+	<h2>Post list</h2>
+	{% for post in posts %}
+		<!--
+			post의 author.username과
+			post.photo를 출력
+		-->
+		<div>
+
+			<div class="float-left">
+				{% if post.author.img_profile %}
+				<img src="{{ post.author.img_profile.url }}" style="width:30px;" class="rounded-circle float-left mr-1"
+					 alt="">
+				{% endif %}
+			</div>
+			<div>{{ post.author.username }}</div>
+			<div class="float-right" style="margin:-20px 0 20px 0">
+				<form action="{% url 'posts:post-delete' pk=post.pk %}" method="POST">
+					{% csrf_token %}
+					<button class="btn btn-danger btn-sm ml-5">지우기</button>
+				</form>
+
+			</div>
+			<div>
+				{% if post.photo %}
+				<img width="100%" src="{{ post.photo.url }}" alt="">
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
