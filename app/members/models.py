@@ -25,6 +25,14 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+
+    def follow(self, to_user):
+        self.relations_by_from_user.create(
+            to_user=to_user,
+            relation_type=Relation.RELATION_TYPE_FOLLOW,
+        )
+
+
     @property
     def following(self):
         # 내가 follow중인 User Query리턴
@@ -35,18 +43,28 @@ class User(AbstractUser):
         #         relation_type='f',
         #     ).values('to_user')
         # )
-        return User.objects.filter(pk__in=self.following_relations.values('to_user'))
-
+        # return User.objects.filter(pk__in=self.following_relations.values('to_user'))
+        return User.objects.filter(
+            relations_by_to_user__from_user=self,
+            relations_by_to_user__relation_type=Relation.RELATION_TYPE_FOLLOW,
+        )
     @property
     def followers(self):
         # 나를 follow중인 User QuerySet
-        return User.objects.filter(pk__in=self.followers_relations.values('to_user'))
+        # return User.objects.filter(pk__in=self.followers_relations.values('to_user'))
+        return User.objects.filter(
+            relations_by_to_user__from_user=self,
+            relations_by_to_user__relation_type=Relation.RELATION_TYPE_FOLLOW,
+        )
 
     @property
     def blcok_users(self):
         # 내가 block중인 User QuerySet
-        return User.objects.filter(pk__in=self.block_users_relations.values('to_user'))
-
+        # return User.objects.filter(pk__in=self.block_users_relations.values('to_user'))
+        return User.objects.filter(
+            relations_by_to_user__from_user=self,
+            relations_by_to_user__relation_type=Relation.RELATION_TYPE_BLOCK,
+        )
 
 
     @property
