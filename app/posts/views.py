@@ -110,3 +110,5 @@ def post_create_without_form(request):
         post.save()
         return redirect('posts:post-detail', pk=post.pk)
     return render(request, 'posts/post_create.html')
+
+

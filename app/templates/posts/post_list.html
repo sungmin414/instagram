@@ -7,7 +7,7 @@
 			post의 author.username과
 			post.photo를 출력
 		-->
-		<div>
+		<div class="mt-4">
 
 			<div class="float-left">
 				{% if post.author.img_profile %}
@@ -16,6 +16,10 @@
 				{% endif %}
 			</div>
 			<div>{{ post.author.username }}</div>
+			<form action="" method="POST" style="display:inlinblock">
+				{% csrf_token %}
+				<button type="submit" class="btn btn-outline-primary btn-sm">+ Follow</button>
+			</form>
 			<div class="float-right" style="margin:-20px 0 20px 0">
 				<form action="{% url 'posts:post-delete' pk=post.pk %}" method="POST">
 					{% csrf_token %}
@@ -30,4 +34,15 @@
 			</div>
 		</div>
 	{% endfor %}
+
+
+
+<!--<div>  댓글-->
+    <!--{% for comment in post.comments.all %}-->
+        <!--<div>-->
+            <!--<div>{{ comment.created_data }}</div>-->
+            <!--<p>{{ comment.text }}</p>-->
+        <!--</div>-->
+    <!--{% endfor %}-->
+<!--</div>-->
 {% endblock %}

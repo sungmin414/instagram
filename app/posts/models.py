@@ -8,9 +8,23 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+
+
     class Meta:
         ordering = ['-pk']
 
 # admin에 등록
 # superuser생성
 # 로그인 해서 Post하나 추가해보기
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(Post, on_delete=models.CASCADE)
+    text = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.text
+
+
