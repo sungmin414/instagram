@@ -10,4 +10,13 @@
     </form>
 </div>
 
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="text">
+
+        <button type="submit">댓글달</button>
+    </form>
+</div>
+
 {% endblock %}
