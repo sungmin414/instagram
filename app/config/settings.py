@@ -35,6 +35,10 @@ FACEBOOK_APP_SECRET_CODE = 'a6d569f9b74f0cdefdad5ae988b41b11'
 
 # Auth
 AUTH_USER_MODEL = 'members.User'
+AUTHENTICATION_BACKENDS =[
+    'django.contrib.auth.backends.ModelBackend',
+    'members.backends.FacebookBackend',
+]
 LOGIN_URL = '/members/login/'
 
 
