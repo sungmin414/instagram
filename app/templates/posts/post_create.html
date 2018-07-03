@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div>
 
-<form action="" method="POST" enctype ="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form %}
-    <div class="form-group">
-        <label for="{{ field.id_for_label }}"></label>
-    </div>
-    {{ field }}
-    {% endfor %}
-    <div>
-        <button type="submit" class="btn btn-primary btn-block">포스트 업데이트</button>
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
 
-    </div>
-</form>
+		{% for field in form %}
+		<div class="form-group">
+			<label for="{{ field.id_for_label }}">{{ field.label }}</label>
+			{{ field }}
+		</div>
+		{% endfor %}
+		<button type="submit" class="btn btn-primary btn-block">작성</button>
+	</form>
+</div>
 {% endblock %}

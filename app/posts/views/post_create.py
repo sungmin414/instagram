@@ -1,13 +1,11 @@
-from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 
-from ..models import Post
 from ..forms import PostModelForm, PostForm
+from ..models import Post
 
-
-__all__ =(
+__all__ = (
     'post_create',
-    'post_create_with_form',
-
 )
 
 
@@ -57,5 +55,3 @@ def post_create_without_form(request):
         post.save()
         return redirect('posts:post-detail', pk=post.pk)
     return render(request, 'posts/post_create.html')
-
-

@@ -2,6 +2,10 @@ from django.shortcuts import render
 
 from ..models import Post
 
+__all__ = (
+    'post_list',
+)
+
 
 def post_list(request):
     posts = Post.objects.all()

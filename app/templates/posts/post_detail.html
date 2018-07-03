@@ -1,22 +1,5 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Post detail</h2>
-<div>
-    <div><img src="{{ post.photo.url }}" alt=""></div>
-    <form action="{% url 'posts:post-delete' post.pk %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">삭제</button>
-    </form>
-</div>
-
-<div>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <input type="text" name="text">
-
-        <button type="submit">댓글달</button>
-    </form>
-</div>
-
+	{% include 'include/posts/post.html' %}
 {% endblock %}

@@ -1,5 +1,5 @@
 from .post_create import *
-from .post_comment import *
+from .comment_create import *
 from .post_delete import *
 from .post_detail import *
 from .post_like import *
