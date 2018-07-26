@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from posts.apis import PostList
 from . import views
 
 urlpatterns = [
@@ -25,6 +26,7 @@ urlpatterns = [
     path('posts/', include('posts.urls')),
     path('members/', include('members.urls')),
     path('', views.index, name='index'),
+    path('api/posts/', PostList.as_view(), name='post-list'),
 
     # path('media/<str:path>/', 특정view_function),
 

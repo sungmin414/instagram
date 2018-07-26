@@ -48,6 +48,8 @@ LOGIN_URL = '/members/login/'
 INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'members.apps.MembersConfig',
+    'rest_framework',
+
 
     'django.contrib.admin',
     'django.contrib.auth',
