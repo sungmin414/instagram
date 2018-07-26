@@ -19,6 +19,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 from posts.apis import PostList
+from members.apis import UserList
+
 from . import views
 
 urlpatterns = [
@@ -27,6 +29,7 @@ urlpatterns = [
     path('members/', include('members.urls')),
     path('', views.index, name='index'),
     path('api/posts/', PostList.as_view(), name='post-list'),
+    path('api/users/', UserList.as_view(), name='user-list'),
 
     # path('media/<str:path>/', 특정view_function),
 
